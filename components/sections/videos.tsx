@@ -42,7 +42,7 @@ export function Videos() {
               onClick={() => setActiveVideo(video.id)}
             >
               <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-card transition-all duration-500 hover:border-accent-cyan/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.1)]">
-                {/* Replace with actual video thumbnails from WordPress media library */}
+                {/* Video thumbnail from Southern Exposure Music */}
                 <div className="relative aspect-video overflow-hidden">
                   <Image
                     src={video.thumbnail}

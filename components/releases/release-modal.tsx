@@ -26,7 +26,7 @@ export function ReleaseModal({ release, open, onOpenChange }: ReleaseModalProps)
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[90vh] overflow-y-auto">
         <div className="grid gap-0 sm:grid-cols-2">
-          {/* Replace with actual album art from WordPress media library */}
+          {/* Album artwork from Southern Exposure Music catalog */}
           <div className="relative aspect-square overflow-hidden bg-black">
             <Image
               src={release.image}

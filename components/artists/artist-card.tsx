@@ -29,7 +29,7 @@ export function ArtistCard({ artist, index }: ArtistCardProps) {
           isFeatured ? "grid lg:grid-cols-2" : ""
         }`}
       >
-        {/* Replace with actual artist photo from WordPress media library */}
+        {/* Artist photo from Southern Exposure Music */}
         <div
           className={`relative overflow-hidden ${
             isFeatured ? "aspect-[4/5] lg:aspect-auto lg:min-h-[400px]" : "aspect-[3/4]"

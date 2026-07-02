@@ -22,7 +22,7 @@ export function ReleaseCard({ release, index, onSelect }: ReleaseCardProps) {
       className="group flex-shrink-0 w-[280px] sm:w-auto"
     >
       <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-card transition-all duration-500 hover:border-accent-indigo/30 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)]">
-        {/* Replace with actual album art from WordPress media library */}
+          {/* Album artwork from Southern Exposure Music catalog */}
         <div className="relative aspect-square overflow-hidden">
           <Image
             src={release.image}

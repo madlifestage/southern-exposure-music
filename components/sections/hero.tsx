@@ -37,12 +37,11 @@ function WaveformBars() {
 export function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background layers */}
       {/* Replace hero background with actual high-resolution image from WordPress media library */}
       <div className="absolute inset-0">
         <Image
-          src="https://picsum.photos/seed/sem-hero-club/1920/1080"
-          alt="Atmospheric electronic music club scene with neon lighting"
+          src="/images/hero/raskal-live.jpg"
+          alt="Raskal performing live — Southern Exposure Music"
           fill
           priority
           className="object-cover opacity-30"
