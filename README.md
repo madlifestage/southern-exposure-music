@@ -118,7 +118,7 @@ The contact form in the footer is a placeholder UI. To make it functional, conne
 - [x] Configure custom domain on Vercel
 - [ ] Add `/releases` full discography page
 - [ ] Add individual artist pages
-- [ ] Connect GitHub auto-deploy on push to `main`
+- [x] Connect GitHub auto-deploy on push to `main`
 
 ## License
 
