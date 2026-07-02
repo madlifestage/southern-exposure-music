@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail } from "lucide-react";
 import { Logo } from "@/components/layout/logo";
 import { ContactForm } from "@/components/layout/contact-form";
@@ -9,7 +10,14 @@ import { NAV_LINKS, SOCIAL_LINKS, SITE } from "@/lib/constants";
 import { scrollToSection } from "@/lib/utils";
 
 export function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  const handleSectionLink = (href: string) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      scrollToSection(href.replace("/#", ""));
+    }
+  };
 
   return (
     <footer id="contact" className="border-t border-white/5 bg-[#08080c]">
@@ -46,17 +54,28 @@ export function Footer() {
             <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <button
-                    onClick={() => scrollToSection(link.href.replace("#", ""))}
-                    className="text-sm text-muted-foreground transition-colors hover:text-accent-cyan"
-                  >
-                    {link.label}
-                  </button>
+                  {link.href.startsWith("/#") ? (
+                    <Link
+                      href={link.href}
+                      onClick={() => handleSectionLink(link.href)}
+                      className="text-sm text-muted-foreground transition-colors hover:text-accent-cyan"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-accent-cyan"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
               <li>
                 <Link
-                  href="#listen"
+                  href="/#listen"
+                  onClick={() => handleSectionLink("/#listen")}
                   className="text-sm text-muted-foreground transition-colors hover:text-accent-cyan"
                 >
                   Listen

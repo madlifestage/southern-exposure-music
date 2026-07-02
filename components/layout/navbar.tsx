@@ -3,6 +3,7 @@
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SocialIcon } from "@/components/ui/social-icon";
@@ -11,6 +12,7 @@ import { NAV_LINKS, SOCIAL_LINKS, SPOTIFY_URL } from "@/lib/constants";
 import { cn, scrollToSection } from "@/lib/utils";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -29,8 +31,34 @@ export function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    const id = href.replace("#", "");
-    scrollToSection(id);
+
+    if (href.startsWith("/#")) {
+      const id = href.replace("/#", "");
+      if (pathname === "/") {
+        scrollToSection(id);
+        return;
+      }
+    }
+  };
+
+  const renderNavItem = (link: (typeof NAV_LINKS)[number], className: string) => {
+    if (link.href.startsWith("/#")) {
+      return (
+        <Link
+          href={link.href}
+          onClick={() => handleNavClick(link.href)}
+          className={className}
+        >
+          {link.label}
+        </Link>
+      );
+    }
+
+    return (
+      <Link href={link.href} onClick={() => setMobileOpen(false)} className={className}>
+        {link.label}
+      </Link>
+    );
   };
 
   return (
@@ -53,12 +81,10 @@ export function Navbar() {
           <ul className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <button
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-accent-cyan"
-                >
-                  {link.label}
-                </button>
+                {renderNavItem(
+                  link,
+                  "text-sm font-medium text-muted-foreground transition-colors hover:text-accent-cyan"
+                )}
               </li>
             ))}
           </ul>
@@ -116,16 +142,17 @@ export function Navbar() {
               aria-label="Mobile navigation"
             >
               {NAV_LINKS.map((link, i) => (
-                <motion.button
+                <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.05 }}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-2xl font-semibold text-foreground transition-colors hover:text-accent-cyan"
                 >
-                  {link.label}
-                </motion.button>
+                  {renderNavItem(
+                    link,
+                    "text-2xl font-semibold text-foreground transition-colors hover:text-accent-cyan"
+                  )}
+                </motion.div>
               ))}
 
               <motion.div

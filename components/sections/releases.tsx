@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ReleaseCard } from "@/components/releases/release-card";
@@ -62,10 +63,10 @@ export function Releases() {
           className="mt-12 flex justify-center"
         >
           <Button variant="outline" size="lg" asChild>
-            <a href="#releases">
+            <Link href="/releases">
               View Full Discography
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </Button>
         </motion.div>
       </div>

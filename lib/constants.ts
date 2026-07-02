@@ -11,10 +11,10 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Releases", href: "#releases" },
-  { label: "Artists", href: "#artists" },
-  { label: "Videos", href: "#videos" },
-  { label: "Contact", href: "#contact" },
+  { label: "Releases", href: "/releases" },
+  { label: "Artists", href: "/#artists" },
+  { label: "Videos", href: "/#videos" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 export const SOCIAL_LINKS = [

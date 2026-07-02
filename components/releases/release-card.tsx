@@ -10,16 +10,17 @@ interface ReleaseCardProps {
   release: Release;
   index: number;
   onSelect: (release: Release) => void;
+  grid?: boolean;
 }
 
-export function ReleaseCard({ release, index, onSelect }: ReleaseCardProps) {
+export function ReleaseCard({ release, index, onSelect, grid = false }: ReleaseCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group flex-shrink-0 w-[280px] sm:w-auto"
+      className={grid ? "group w-full" : "group w-[280px] flex-shrink-0 sm:w-auto"}
     >
       <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-card transition-all duration-500 hover:border-accent-indigo/30 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)]">
         {/* Album artwork — tap/click opens release modal */}

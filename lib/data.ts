@@ -1,3 +1,5 @@
+import { DISCOGRAPHY, FEATURED_RELEASE_IDS } from "./discography";
+
 export type Release = {
   id: string;
   title: string;
@@ -5,6 +7,7 @@ export type Release = {
   catalog?: string;
   year?: string;
   genre: string;
+  releaseType?: string;
   description: string;
   image: string;
   imageAlt: string;
@@ -14,6 +17,67 @@ export type Release = {
   beatportUrl?: string;
   bandcampUrl?: string;
 };
+
+const FEATURED_OVERRIDES: Record<string, Partial<Release>> = {
+  "this-moment": {
+    catalog: "SEM0053",
+    genre: "Techno",
+    description:
+      "A driving techno cut built for peak-time energy — precision drums, hypnotic synths, and relentless forward motion from Aidan Rolfe.",
+  },
+  everyday: {
+    catalog: "SEM0052",
+    genre: "Melodic / Progressive",
+    description:
+      "A melodic progressive mini-album exploring emotional depth and dancefloor dynamics — signature Raskal craftsmanship across multiple tracks.",
+  },
+  "high-emotion": {
+    catalog: "SEM0051",
+    genre: "Progressive House",
+    description:
+      "Euphoric progressive house with soaring melodies and deep emotional undertones — a collaborative release from Bozzy and False Peaks.",
+  },
+  "stalker-vibes": {
+    catalog: "SEM0050",
+    genre: "Techno",
+    description:
+      "Dark, brooding techno with an underground edge — Raskal delivers tension and release in equal measure.",
+  },
+  "troubled-nights": {
+    catalog: "SEM029",
+    genre: "Techno",
+    description:
+      "Late-night techno with cinematic atmosphere — moody pads, rolling basslines, and nocturnal energy.",
+  },
+  "droid-love": {
+    catalog: "SEM0045",
+    genre: "Techno",
+    description:
+      "Mechanical grooves meet human soul — a futuristic techno journey from the SEM catalog.",
+  },
+  "let-me-in": {
+    catalog: "SEM0042",
+    genre: "House / Techno",
+    description:
+      "A crossover house-techno anthem with infectious hooks and a driving four-on-the-floor pulse.",
+  },
+  "taleh-elohim": {
+    catalog: "SEM0040",
+    genre: "Progressive / Trance",
+    description:
+      "Atmospheric progressive trance with spiritual undertones — CKsimon's signature sound design shines.",
+  },
+};
+
+export const RELEASES: Release[] = FEATURED_RELEASE_IDS.map((id) => {
+  const release = DISCOGRAPHY.find((entry) => entry.id === id);
+  if (!release) {
+    throw new Error(`Missing featured release: ${id}`);
+  }
+  return { ...release, ...FEATURED_OVERRIDES[id] };
+});
+
+export { DISCOGRAPHY };
 
 export type Artist = {
   id: string;
@@ -39,121 +103,6 @@ export type Video = {
   thumbnailAlt: string;
   date: string;
 };
-
-export const RELEASES: Release[] = [
-  {
-    id: "this-moment",
-    title: "This Moment",
-    artist: "Aidan Rolfe",
-    catalog: "SEM0053",
-    year: "2025",
-    genre: "Techno",
-    description:
-      "A driving techno cut built for peak-time energy — precision drums, hypnotic synths, and relentless forward motion from Aidan Rolfe.",
-    image: "/images/releases/this-moment.jpg",
-    imageAlt: "This Moment album artwork — dark electronic techno release on Southern Exposure Music",
-    spotifyId: "album/3g8vEltouCQg1qmS6fkxsg",
-    spotifyUrl: "https://open.spotify.com/album/3g8vEltouCQg1qmS6fkxsg",
-  },
-  {
-    id: "everyday",
-    title: "Everyday",
-    artist: "Raskal",
-    catalog: "SEM0052",
-    year: "2025",
-    genre: "Melodic / Progressive",
-    description:
-      "A melodic progressive mini-album exploring emotional depth and dancefloor dynamics — signature Raskal craftsmanship across multiple tracks.",
-    image: "/images/releases/everyday.jpg",
-    imageAlt: "Everyday mini-album artwork by Raskal on Southern Exposure Music",
-    spotifyId: "album/4tEY5iBCu1K0NQxtDyFa4L",
-    spotifyUrl: "https://open.spotify.com/album/4tEY5iBCu1K0NQxtDyFa4L",
-  },
-  {
-    id: "high-emotion",
-    title: "High Emotion",
-    artist: "Bozzy & False Peaks",
-    catalog: "SEM0051",
-    year: "2025",
-    genre: "Progressive House",
-    description:
-      "Euphoric progressive house with soaring melodies and deep emotional undertones — a collaborative release from Bozzy and False Peaks.",
-    image: "/images/releases/high-emotion.jpg",
-    imageAlt: "High Emotion release artwork by Bozzy and False Peaks",
-    spotifyId: "album/0PrdP8rr5Y1g6Hbh7HpEGi",
-    spotifyUrl: "https://open.spotify.com/album/0PrdP8rr5Y1g6Hbh7HpEGi",
-  },
-  {
-    id: "stalker-vibes",
-    title: "Stalker Vibes",
-    artist: "Raskal",
-    catalog: "SEM0050",
-    year: "2024",
-    genre: "Techno",
-    description:
-      "Dark, brooding techno with an underground edge — Raskal delivers tension and release in equal measure.",
-    image: "/images/releases/stalker-vibes.jpg",
-    imageAlt: "Stalker Vibes techno release artwork by Raskal",
-    spotifyId: "album/5syVONFeINi06dDeFOHmq2",
-    spotifyUrl: "https://open.spotify.com/album/5syVONFeINi06dDeFOHmq2",
-  },
-  {
-    id: "troubled-nights",
-    title: "Troubled Nights",
-    artist: "Raskal",
-    catalog: "SEM029",
-    year: "2020",
-    genre: "Techno",
-    description:
-      "Late-night techno with cinematic atmosphere — moody pads, rolling basslines, and nocturnal energy.",
-    image: "/images/releases/troubled-nights.jpg",
-    imageAlt: "Troubled Nights album artwork by Raskal",
-    spotifyId: "album/5u6CTGGanOxe8zY9rwAFxE",
-    spotifyUrl: "https://open.spotify.com/album/5u6CTGGanOxe8zY9rwAFxE",
-  },
-  {
-    id: "droid-love",
-    title: "Droid Love",
-    artist: "Raskal",
-    catalog: "SEM0045",
-    year: "2019",
-    genre: "Techno",
-    description:
-      "Mechanical grooves meet human soul — a futuristic techno journey from the SEM catalog.",
-    image: "/images/releases/droid-love.jpg",
-    imageAlt: "Droid Love release artwork by Raskal",
-    spotifyId: "album/0d6CiCjGAXFFYfy5GJYVym",
-    spotifyUrl: "https://open.spotify.com/album/0d6CiCjGAXFFYfy5GJYVym",
-  },
-  {
-    id: "let-me-in",
-    title: "Let Me In",
-    artist: "Raskal",
-    catalog: "SEM0042",
-    year: "2018",
-    genre: "House / Techno",
-    description:
-      "A crossover house-techno anthem with infectious hooks and a driving four-on-the-floor pulse.",
-    image: "/images/releases/let-me-in.jpg",
-    imageAlt: "Let Me In release artwork by Raskal",
-    spotifyId: "album/7GX9moeMVC4Ock3KJ7PLzf",
-    spotifyUrl: "https://open.spotify.com/album/7GX9moeMVC4Ock3KJ7PLzf",
-  },
-  {
-    id: "taleh-elohim",
-    title: "Taleh Elohim",
-    artist: "CKsimon",
-    catalog: "SEM0040",
-    year: "2020",
-    genre: "Progressive / Trance",
-    description:
-      "Atmospheric progressive trance with spiritual undertones — CKsimon's signature sound design shines.",
-    image: "/images/releases/taleh-elohim.jpg",
-    imageAlt: "Taleh Elohim release artwork by CKsimon",
-    spotifyId: "album/2tMT3477A1zxPJhcixOreK",
-    spotifyUrl: "https://open.spotify.com/album/2tMT3477A1zxPJhcixOreK",
-  },
-];
 
 export const ARTISTS: Artist[] = [
   {
