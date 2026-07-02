@@ -27,7 +27,7 @@ export const SOCIAL_LINKS = [
   },
   {
     label: "SoundCloud",
-    href: "https://soundcloud.com/southernexposuremusic",
+    href: "https://soundcloud.com/southernexpmus",
     icon: "soundcloud" as const,
   },
   {
@@ -37,10 +37,30 @@ export const SOCIAL_LINKS = [
   },
 ] as const;
 
+/** Raskal (US) — label head; Spotify has no dedicated label profile page */
+export const SPOTIFY_ARTIST_URL =
+  "https://open.spotify.com/artist/0KvLZjLEEmgOetcSMmNi2l";
+
+/** Label compilation — best stand-in for a “full catalog” on Spotify */
+export const SPOTIFY_CATALOG_URL =
+  "https://open.spotify.com/album/4NNNLpHanKOHs68s0Zof99";
+
+export const YOUTUBE_CHANNEL_URL =
+  "https://www.youtube.com/channel/UC0NKwaBvZnOlVGNtclXW_ew";
+
+export const BEATPORT_LABEL_URL =
+  "https://www.beatport.com/label/southern-exposure-music/62422";
+
+export const SOUNDCLOUD_URL = "https://soundcloud.com/southernexpmus";
+
+/** Navbar / hero “Listen on Spotify” — latest release */
+export const SPOTIFY_URL =
+  "https://open.spotify.com/album/3g8vEltouCQg1qmS6fkxsg";
+
 export const STREAMING_PLATFORMS = [
   {
     name: "Spotify",
-    href: "https://open.spotify.com/album/4NNNLpHanKOHs68s0Zof99",
+    href: SPOTIFY_CATALOG_URL,
     color: "#1DB954",
   },
   {
@@ -50,7 +70,7 @@ export const STREAMING_PLATFORMS = [
   },
   {
     name: "Beatport",
-    href: "https://www.beatport.com/label/southern-exposure-music/12345",
+    href: BEATPORT_LABEL_URL,
     color: "#94D500",
   },
   {
@@ -60,15 +80,12 @@ export const STREAMING_PLATFORMS = [
   },
   {
     name: "SoundCloud",
-    href: "https://soundcloud.com/southernexposuremusic",
+    href: SOUNDCLOUD_URL,
     color: "#FF5500",
   },
   {
     name: "YouTube",
-    href: "https://www.youtube.com/",
+    href: YOUTUBE_CHANNEL_URL,
     color: "#FF0000",
   },
 ] as const;
-
-export const SPOTIFY_URL =
-  "https://open.spotify.com/album/4NNNLpHanKOHs68s0Zof99";
