@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { STREAMING_PLATFORMS } from "@/lib/constants";
+import { STREAMING_PLATFORMS, SOUNDCLOUD_EMBED_URL, SOUNDCLOUD_URL } from "@/lib/constants";
 
 export function ListenEverywhere() {
   return (
@@ -59,6 +59,43 @@ export function ListenEverywhere() {
             </motion.div>
           ))}
         </div>
+
+        {/* SoundCloud — Raskal / SEM playlist */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-16 overflow-hidden rounded-2xl border border-white/5 bg-card"
+        >
+          <div className="flex flex-col gap-3 border-b border-white/5 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-accent-cyan">
+                On SoundCloud
+              </p>
+              <p className="mt-1 text-muted-foreground">
+                Raskal — mixes, releases &amp; label favorites
+              </p>
+            </div>
+            <Link
+              href={SOUNDCLOUD_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-[#FF5500] transition-opacity hover:opacity-80"
+            >
+              Open on SoundCloud →
+            </Link>
+          </div>
+          <div className="bg-[#111]">
+            <iframe
+              src={SOUNDCLOUD_EMBED_URL}
+              title="Southern Exposure Music on SoundCloud"
+              allow="autoplay"
+              loading="lazy"
+              className="h-[450px] w-full border-0"
+            />
+          </div>
+        </motion.div>
 
         {/* Spotify embed — Southern Exposure's Hidden Universe, Vol. 1 compilation */}
         <motion.div

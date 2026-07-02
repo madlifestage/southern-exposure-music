@@ -17,22 +17,17 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/southernexposuremusic/",
+    href: "https://www.instagram.com/southernexpmus/",
     icon: "instagram" as const,
   },
   {
-    label: "X (Twitter)",
-    href: "https://twitter.com/semrecords",
-    icon: "twitter" as const,
-  },
-  {
     label: "SoundCloud",
-    href: "https://soundcloud.com/southernexpmus",
+    href: "https://soundcloud.com/raskalsound",
     icon: "soundcloud" as const,
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/southernexposuremusic",
+    href: "https://www.facebook.com/SouthernExpMus",
     icon: "facebook" as const,
   },
 ] as const;
@@ -51,7 +46,10 @@ export const YOUTUBE_CHANNEL_URL =
 export const BEATPORT_LABEL_URL =
   "https://www.beatport.com/label/southern-exposure-music/62422";
 
-export const SOUNDCLOUD_URL = "https://soundcloud.com/southernexpmus";
+export const SOUNDCLOUD_URL = "https://soundcloud.com/raskalsound";
+
+export const SOUNDCLOUD_EMBED_URL =
+  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raskalsound&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true";
 
 /** Navbar / hero “Listen on Spotify” — latest release */
 export const SPOTIFY_URL =
