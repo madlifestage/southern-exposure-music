@@ -29,7 +29,7 @@ const FEATURED_OVERRIDES: Record<string, Partial<Release>> = {
     catalog: "SEM0052",
     genre: "Melodic / Progressive",
     description:
-      "A melodic progressive mini-album exploring emotional depth and dancefloor dynamics — signature Raskal craftsmanship across multiple tracks.",
+      "A melodic progressive album exploring emotional depth and dancefloor dynamics — signature Raskal craftsmanship across multiple tracks.",
   },
   "high-emotion": {
     catalog: "SEM0051",
