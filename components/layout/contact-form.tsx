@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -13,16 +13,61 @@ import {
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/constants";
 
-export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
-  const handleSubmit = (e: React.FormEvent) => {
+export function ContactForm() {
+  const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+    if (!nextOpen) {
+      setStatus("idle");
+      setErrorMessage("");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          message: formData.get("message"),
+          website: formData.get("website"),
+        }),
+      });
+
+      const data = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    }
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
           Send a Message
@@ -36,18 +81,26 @@ export function ContactForm() {
           </DialogDescription>
         </DialogHeader>
 
-        {submitted ? (
+        {status === "success" ? (
           <div className="py-8 text-center">
             <p className="text-lg font-semibold text-accent-cyan">
               Message sent!
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
-              We&apos;ll get back to you soon. (Placeholder — connect to a form
-              backend like Formspree or Resend.)
+              Thanks for reaching out. We&apos;ll get back to you soon.
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 pt-2">
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
+
             <div>
               <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
                 Name
@@ -57,8 +110,9 @@ export function ContactForm() {
                 name="name"
                 type="text"
                 required
+                disabled={status === "submitting"}
                 placeholder="Your name"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent-indigo/50 focus:outline-none focus:ring-1 focus:ring-accent-indigo/50"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent-indigo/50 focus:outline-none focus:ring-1 focus:ring-accent-indigo/50 disabled:opacity-60"
               />
             </div>
             <div>
@@ -70,8 +124,9 @@ export function ContactForm() {
                 name="email"
                 type="email"
                 required
+                disabled={status === "submitting"}
                 placeholder="you@example.com"
-                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent-indigo/50 focus:outline-none focus:ring-1 focus:ring-accent-indigo/50"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent-indigo/50 focus:outline-none focus:ring-1 focus:ring-accent-indigo/50 disabled:opacity-60"
               />
             </div>
             <div>
@@ -83,13 +138,31 @@ export function ContactForm() {
                 name="message"
                 required
                 rows={4}
+                maxLength={5000}
+                disabled={status === "submitting"}
                 placeholder="Tell us what's on your mind..."
-                className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent-indigo/50 focus:outline-none focus:ring-1 focus:ring-accent-indigo/50"
+                className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-accent-indigo/50 focus:outline-none focus:ring-1 focus:ring-accent-indigo/50 disabled:opacity-60"
               />
             </div>
-            <Button type="submit" className="w-full">
-              <Send className="h-4 w-4" />
-              Send Message
+
+            {status === "error" && (
+              <p className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+                {errorMessage}
+              </p>
+            )}
+
+            <Button type="submit" className="w-full" disabled={status === "submitting"}>
+              {status === "submitting" ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4" />
+                  Send Message
+                </>
+              )}
             </Button>
             <p className="text-center text-xs text-muted-foreground">
               Or email us directly at{" "}
