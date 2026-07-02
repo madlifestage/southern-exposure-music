@@ -70,6 +70,11 @@ export function ReleaseModal({ release, open, onOpenChange }: ReleaseModalProps)
                     {release.catalog}
                   </span>
                 )}
+                {release.releaseType && (
+                  <span className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    {release.releaseType}
+                  </span>
+                )}
                 {release.year && (
                   <span className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-muted-foreground">
                     {release.year}

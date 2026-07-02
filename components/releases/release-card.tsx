@@ -57,6 +57,11 @@ export function ReleaseCard({ release, index, onSelect, grid = false }: ReleaseC
                 {release.catalog}
               </span>
             )}
+            {release.releaseType && (
+              <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                {release.releaseType}
+              </span>
+            )}
           </div>
 
           <h3 className="text-lg font-bold leading-tight">{release.title}</h3>
