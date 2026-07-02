@@ -24,6 +24,8 @@ export type Artist = {
   genres: string[];
   /** Tailwind grid placement classes for the bento layout */
   gridClass?: string;
+  /** Tailwind object-position class for photo framing */
+  imagePosition?: string;
 };
 
 export type Video = {
@@ -194,6 +196,7 @@ export const ARTISTS: Artist[] = [
     imageAlt: "The DJ Bri — DJ and producer on Southern Exposure Music",
     genres: ["House", "Techno"],
     gridClass: "md:col-span-2 md:row-span-1",
+    imagePosition: "object-[center_18%]",
   },
   {
     id: "comstock",
@@ -234,6 +237,7 @@ export const ARTISTS: Artist[] = [
     imageAlt: "Nhexis — producer on Southern Exposure Music",
     genres: ["Techno"],
     gridClass: "md:col-span-2 md:row-span-1",
+    imagePosition: "object-[center_15%]",
   },
 ];
 

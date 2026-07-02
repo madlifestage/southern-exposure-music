@@ -24,7 +24,10 @@ export function ArtistCard({ artist, index }: ArtistCardProps) {
           src={artist.image}
           alt={artist.imageAlt}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className={cn(
+            "object-cover transition-transform duration-500 group-hover:scale-105",
+            artist.imagePosition ?? "object-center"
+          )}
           sizes="(max-width: 768px) 50vw, 25vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/50 to-transparent" />
