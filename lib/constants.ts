@@ -40,7 +40,7 @@ export const SOCIAL_LINKS = [
 export const STREAMING_PLATFORMS = [
   {
     name: "Spotify",
-    href: "https://open.spotify.com/artist/placeholder",
+    href: "https://open.spotify.com/album/4NNNLpHanKOHs68s0Zof99",
     color: "#1DB954",
   },
   {
@@ -71,4 +71,4 @@ export const STREAMING_PLATFORMS = [
 ] as const;
 
 export const SPOTIFY_URL =
-  "https://open.spotify.com/artist/placeholder";
+  "https://open.spotify.com/album/4NNNLpHanKOHs68s0Zof99";

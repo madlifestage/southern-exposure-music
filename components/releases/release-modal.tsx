@@ -19,15 +19,36 @@ interface ReleaseModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
+function spotifyLink(release: Release) {
+  if (release.spotifyId) {
+    return `https://open.spotify.com/${release.spotifyId}`;
+  }
+  return release.spotifyUrl;
+}
+
 export function ReleaseModal({ release, open, onOpenChange }: ReleaseModalProps) {
   if (!release) return null;
 
+  const spotifyHref = spotifyLink(release);
+  const hasEmbed = Boolean(release.spotifyId);
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
+        {hasEmbed && (
+          <div className="overflow-hidden rounded-xl border border-white/10 bg-[#121212]">
+            <iframe
+              src={`https://open.spotify.com/embed/${release.spotifyId}?utm_source=generator&theme=0`}
+              title={`${release.artist} — ${release.title} on Spotify`}
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              className="h-[352px] w-full border-0"
+            />
+          </div>
+        )}
+
         <div className="grid gap-0 sm:grid-cols-2">
-          {/* Album artwork from Southern Exposure Music catalog */}
-          <div className="relative aspect-square overflow-hidden bg-black">
+          <div className="relative aspect-square overflow-hidden rounded-xl bg-black sm:rounded-r-none">
             <Image
               src={release.image}
               alt={release.imageAlt}
@@ -68,15 +89,15 @@ export function ReleaseModal({ release, open, onOpenChange }: ReleaseModalProps)
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              {release.spotifyUrl && (
+              {spotifyHref && (
                 <Button asChild size="sm">
                   <Link
-                    href={release.spotifyUrl}
+                    href={spotifyHref}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Music className="h-4 w-4" />
-                    Spotify
+                    {hasEmbed ? "Open in Spotify" : "Listen on Spotify"}
                   </Link>
                 </Button>
               )}

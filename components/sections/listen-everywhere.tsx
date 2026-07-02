@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
-import { STREAMING_PLATFORMS, SPOTIFY_URL } from "@/lib/constants";
+import { STREAMING_PLATFORMS } from "@/lib/constants";
 
 export function ListenEverywhere() {
   return (
@@ -60,7 +60,7 @@ export function ListenEverywhere() {
           ))}
         </div>
 
-        {/* Spotify embed — replace src with actual playlist/artist embed URL from Spotify */}
+        {/* Spotify embed — Southern Exposure's Hidden Universe, Vol. 1 compilation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,27 +73,17 @@ export function ListenEverywhere() {
               Now on Spotify
             </p>
             <p className="mt-1 text-muted-foreground">
-              Southern Exposure Music — Latest releases and label favorites
+              Southern Exposure&apos;s Hidden Universe, Vol. 1 — label compilation
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center gap-4 bg-[#121212] px-6 py-12 sm:flex-row sm:py-16">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#1DB954]/20 text-3xl font-bold text-[#1DB954]">
-              ♫
-            </div>
-            <div className="text-center sm:text-left">
-              <p className="text-lg font-semibold">Stream the full catalog</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Replace this block with a Spotify embed iframe once you have the artist or playlist URL.
-              </p>
-            </div>
-            <Link
-              href={SPOTIFY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[#1DB954] px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105 hover:shadow-[0_0_20px_rgba(29,185,84,0.4)]"
-            >
-              Open on Spotify
-            </Link>
+          <div className="bg-[#121212]">
+            <iframe
+              src="https://open.spotify.com/embed/album/4NNNLpHanKOHs68s0Zof99?utm_source=generator&theme=0"
+              title="Southern Exposure Music on Spotify"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              className="h-[352px] w-full border-0"
+            />
           </div>
         </motion.div>
       </div>

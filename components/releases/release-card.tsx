@@ -22,8 +22,13 @@ export function ReleaseCard({ release, index, onSelect }: ReleaseCardProps) {
       className="group flex-shrink-0 w-[280px] sm:w-auto"
     >
       <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-card transition-all duration-500 hover:border-accent-indigo/30 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)]">
-          {/* Album artwork from Southern Exposure Music catalog */}
-        <div className="relative aspect-square overflow-hidden">
+        {/* Album artwork — tap/click opens release modal */}
+        <button
+          type="button"
+          onClick={() => onSelect(release)}
+          className="relative block aspect-square w-full cursor-pointer overflow-hidden text-left"
+          aria-label={`Play ${release.title} by ${release.artist}`}
+        >
           <Image
             src={release.image}
             alt={release.imageAlt}
@@ -33,13 +38,13 @@ export function ReleaseCard({ release, index, onSelect }: ReleaseCardProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-transparent to-transparent opacity-60" />
 
-          {/* Hover overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-indigo/90 text-white shadow-lg shadow-indigo-500/40">
+          {/* Play overlay — visible on hover (desktop) and always subtly on touch devices */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-indigo/90 text-white shadow-lg shadow-indigo-500/40 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
               <Play className="h-6 w-6 fill-current" />
             </div>
           </div>
-        </div>
+        </button>
 
         <div className="p-5">
           <div className="mb-2 flex flex-wrap gap-2">

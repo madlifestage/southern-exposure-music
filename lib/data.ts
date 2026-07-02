@@ -8,6 +8,8 @@ export type Release = {
   description: string;
   image: string;
   imageAlt: string;
+  /** Spotify album or track path, e.g. "album/abc123" or "track/xyz789" */
+  spotifyId?: string;
   spotifyUrl?: string;
   beatportUrl?: string;
   bandcampUrl?: string;
@@ -50,33 +52,36 @@ export const RELEASES: Release[] = [
       "A driving techno cut built for peak-time energy — precision drums, hypnotic synths, and relentless forward motion from Aidan Rolfe.",
     image: "/images/releases/this-moment.jpg",
     imageAlt: "This Moment album artwork — dark electronic techno release on Southern Exposure Music",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/3g8vEltouCQg1qmS6fkxsg",
+    spotifyUrl: "https://open.spotify.com/album/3g8vEltouCQg1qmS6fkxsg",
   },
   {
     id: "everyday",
     title: "Everyday",
     artist: "Raskal",
     catalog: "SEM0052",
-    year: "2024",
+    year: "2025",
     genre: "Melodic / Progressive",
     description:
       "A melodic progressive mini-album exploring emotional depth and dancefloor dynamics — signature Raskal craftsmanship across multiple tracks.",
     image: "/images/releases/everyday.jpg",
     imageAlt: "Everyday mini-album artwork by Raskal on Southern Exposure Music",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/4tEY5iBCu1K0NQxtDyFa4L",
+    spotifyUrl: "https://open.spotify.com/album/4tEY5iBCu1K0NQxtDyFa4L",
   },
   {
     id: "high-emotion",
     title: "High Emotion",
     artist: "Bozzy & False Peaks",
     catalog: "SEM0051",
-    year: "2024",
+    year: "2025",
     genre: "Progressive House",
     description:
       "Euphoric progressive house with soaring melodies and deep emotional undertones — a collaborative release from Bozzy and False Peaks.",
     image: "/images/releases/high-emotion.jpg",
     imageAlt: "High Emotion release artwork by Bozzy and False Peaks",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/0PrdP8rr5Y1g6Hbh7HpEGi",
+    spotifyUrl: "https://open.spotify.com/album/0PrdP8rr5Y1g6Hbh7HpEGi",
   },
   {
     id: "stalker-vibes",
@@ -89,7 +94,8 @@ export const RELEASES: Release[] = [
       "Dark, brooding techno with an underground edge — Raskal delivers tension and release in equal measure.",
     image: "/images/releases/stalker-vibes.jpg",
     imageAlt: "Stalker Vibes techno release artwork by Raskal",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/5syVONFeINi06dDeFOHmq2",
+    spotifyUrl: "https://open.spotify.com/album/5syVONFeINi06dDeFOHmq2",
   },
   {
     id: "troubled-nights",
@@ -102,7 +108,8 @@ export const RELEASES: Release[] = [
       "Late-night techno with cinematic atmosphere — moody pads, rolling basslines, and nocturnal energy.",
     image: "/images/releases/troubled-nights.jpg",
     imageAlt: "Troubled Nights album artwork by Raskal",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/5u6CTGGanOxe8zY9rwAFxE",
+    spotifyUrl: "https://open.spotify.com/album/5u6CTGGanOxe8zY9rwAFxE",
   },
   {
     id: "droid-love",
@@ -115,7 +122,8 @@ export const RELEASES: Release[] = [
       "Mechanical grooves meet human soul — a futuristic techno journey from the SEM catalog.",
     image: "/images/releases/droid-love.jpg",
     imageAlt: "Droid Love release artwork by Raskal",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/0d6CiCjGAXFFYfy5GJYVym",
+    spotifyUrl: "https://open.spotify.com/album/0d6CiCjGAXFFYfy5GJYVym",
   },
   {
     id: "let-me-in",
@@ -128,7 +136,8 @@ export const RELEASES: Release[] = [
       "A crossover house-techno anthem with infectious hooks and a driving four-on-the-floor pulse.",
     image: "/images/releases/let-me-in.jpg",
     imageAlt: "Let Me In release artwork by Raskal",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/7GX9moeMVC4Ock3KJ7PLzf",
+    spotifyUrl: "https://open.spotify.com/album/7GX9moeMVC4Ock3KJ7PLzf",
   },
   {
     id: "taleh-elohim",
@@ -141,7 +150,8 @@ export const RELEASES: Release[] = [
       "Atmospheric progressive trance with spiritual undertones — CKsimon's signature sound design shines.",
     image: "/images/releases/taleh-elohim.jpg",
     imageAlt: "Taleh Elohim release artwork by CKsimon",
-    spotifyUrl: "https://open.spotify.com/",
+    spotifyId: "album/2tMT3477A1zxPJhcixOreK",
+    spotifyUrl: "https://open.spotify.com/album/2tMT3477A1zxPJhcixOreK",
   },
 ];
 
