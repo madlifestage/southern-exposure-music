@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { JsonLd } from "@/components/seo/json-ld";
+import { SITE } from "@/lib/constants";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,9 +11,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Southern Exposure Music | Independent Electronic Record Label",
-  description:
-    "Southern Exposure Music (SEM) — Atlanta-based independent electronic music label since 2010. House, Techno, Trance. Founded by Raskal.",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: `${SITE.name} | Independent Electronic Record Label`,
+    template: `%s | ${SITE.shortName}`,
+  },
+  description: SITE.description,
   keywords: [
     "Southern Exposure Music",
     "SEM",
@@ -22,26 +27,43 @@ export const metadata: Metadata = {
     "trance",
     "Raskal",
     "independent record label",
+    "Southern Exposure",
   ],
-  authors: [{ name: "Southern Exposure Music" }],
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Southern Exposure Music | Independent Electronic Record Label",
+    type: "website",
+    locale: "en_US",
+    url: SITE.url,
+    siteName: SITE.name,
+    title: `${SITE.name} | Independent Electronic Record Label`,
     description:
       "Atlanta-based independent electronic music label since 2010. House • Techno • Trance.",
-    url: "https://southernexposuremusic.com",
-    siteName: "Southern Exposure Music",
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Southern Exposure Music",
+    title: SITE.name,
     description:
       "Independent electronic music label — House, Techno, Trance since 2010.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/images/logo/sem-logo.png",
+    apple: "/images/logo/sem-logo.png",
   },
 };
 
@@ -52,7 +74,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        <JsonLd />
+        {children}
+      </body>
     </html>
   );
 }

@@ -119,6 +119,7 @@ The contact form in the footer is a placeholder UI. To make it functional, conne
 - [ ] Add `/releases` full discography page
 - [ ] Add individual artist pages
 - [x] Connect GitHub auto-deploy on push to `main`
+- [x] SEO basics (OG image, robots.txt, sitemap, structured data)
 
 ## License
 

@@ -2,6 +2,9 @@ export const SITE = {
   name: "Southern Exposure Music",
   shortName: "SEM",
   tagline: "Independent Electronic Music Label | House • Techno • Trance | Since 2010",
+  description:
+    "Southern Exposure Music (SEM) — Atlanta-based independent electronic music label since 2010. House, Techno, Trance. Founded by Raskal.",
+  url: "https://www.southernexposuremusic.com",
   email: "ronnie@southernexposuremusic.com",
   founded: 2010,
   location: "Atlanta, GA",
