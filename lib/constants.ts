@@ -59,19 +59,9 @@ export const STREAMING_PLATFORMS = [
     color: "#1DB954",
   },
   {
-    name: "Apple Music",
-    href: "https://music.apple.com/",
-    color: "#FA243C",
-  },
-  {
     name: "Beatport",
     href: BEATPORT_LABEL_URL,
     color: "#94D500",
-  },
-  {
-    name: "Bandcamp",
-    href: "https://southernexposuremusic.bandcamp.com/",
-    color: "#629aa9",
   },
   {
     name: "SoundCloud",
