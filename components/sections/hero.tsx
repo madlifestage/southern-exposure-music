@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SPOTIFY_URL } from "@/lib/constants";
+import { RELEASES } from "@/lib/data";
 import { scrollToSection } from "@/lib/utils";
 
 function WaveformBars() {
@@ -35,23 +37,29 @@ function WaveformBars() {
 }
 
 export function Hero() {
+  const [bgImage, setBgImage] = useState(RELEASES[0].image);
+
+  useEffect(() => {
+    const randomRelease =
+      RELEASES[Math.floor(Math.random() * RELEASES.length)];
+    setBgImage(randomRelease.image);
+  }, []);
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Replace hero background with actual high-resolution image from WordPress media library */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero/raskal-live.jpg"
-          alt="Raskal performing live — Southern Exposure Music"
+          src={bgImage}
+          alt="Southern Exposure Music release artwork"
           fill
           priority
-          className="object-cover opacity-30"
+          className="object-cover opacity-25 grayscale-[30%]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/60 via-[#0a0a0f]/80 to-[#0a0a0f]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/70 via-[#0a0a0f]/85 to-[#0a0a0f]" />
         <div className="absolute inset-0 bg-grid opacity-40" />
       </div>
 
-      {/* Animated gradient orbs */}
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
@@ -75,23 +83,25 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <p className="section-label mb-6">Atlanta · Since 2010</p>
+          <p className="section-label mb-8">Atlanta · Since 2010</p>
 
-          <h1 className="text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-            <span className="block">Southern</span>
-            <span className="block text-gradient">Exposure</span>
-            <span className="block">Music</span>
-          </h1>
+          <div className="mx-auto flex justify-center">
+            <Image
+              src="/images/logo/southern-exposure-logo.png"
+              alt="Southern Exposure Music"
+              width={560}
+              height={100}
+              priority
+              className="h-auto w-full max-w-[min(90vw,560px)]"
+            />
+          </div>
 
           <p className="mx-auto mt-8 max-w-2xl text-base text-muted-foreground md:text-lg lg:text-xl">
             Independent Electronic Music Label&nbsp;|&nbsp;House&nbsp;•&nbsp;Techno&nbsp;•&nbsp;Trance&nbsp;|&nbsp;Since&nbsp;2010
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("releases")}
-            >
+            <Button size="lg" onClick={() => scrollToSection("releases")}>
               Explore Releases
             </Button>
             <Button variant="outline" size="lg" asChild>
@@ -111,7 +121,6 @@ export function Hero() {
           <WaveformBars />
         </motion.div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

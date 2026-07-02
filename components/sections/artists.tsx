@@ -15,7 +15,7 @@ export function Artists() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 md:mb-16"
+          className="mb-10 md:mb-12"
         >
           <p className="section-label">Roster</p>
           <h2 className="section-title">
@@ -27,7 +27,7 @@ export function Artists() {
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-flow-dense md:auto-rows-[minmax(180px,1fr)] md:gap-3 lg:auto-rows-[minmax(200px,1fr)] lg:gap-4">
           {ARTISTS.map((artist, i) => (
             <ArtistCard key={artist.id} artist={artist} index={i} />
           ))}
