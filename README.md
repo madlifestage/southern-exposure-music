@@ -111,13 +111,14 @@ The contact form in the footer is a placeholder UI. To make it functional, conne
 
 ## Recommended Next Steps
 
-- [ ] Migrate real album art and photos from WordPress
-- [ ] Add actual Spotify artist ID and playlist embed
-- [ ] Set correct YouTube video IDs
-- [ ] Wire up contact form backend
+- [x] Migrate real album art and photos from WordPress
+- [x] Add actual Spotify artist ID and playlist embed
+- [x] Set correct YouTube video IDs
+- [x] Wire up contact form backend
+- [x] Configure custom domain on Vercel
 - [ ] Add `/releases` full discography page
 - [ ] Add individual artist pages
-- [ ] Configure custom domain on Vercel
+- [ ] Connect GitHub auto-deploy on push to `main`
 
 ## License
 
