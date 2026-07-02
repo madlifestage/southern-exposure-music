@@ -37,7 +37,8 @@ function WaveformBars() {
 }
 
 export function Hero() {
-  const [bgImage, setBgImage] = useState(RELEASES[0].image);
+  const [bgImage, setBgImage] = useState<string | null>(null);
+  const [bgReady, setBgReady] = useState(false);
 
   useEffect(() => {
     const randomRelease =
@@ -47,15 +48,19 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
-        <Image
-          src={bgImage}
-          alt="Southern Exposure Music release artwork"
-          fill
-          priority
-          className="object-cover opacity-40 grayscale-[20%]"
-          sizes="100vw"
-        />
+      <div className="absolute inset-0 bg-[#0a0a0f]">
+        {bgImage && (
+          <Image
+            src={bgImage}
+            alt="Southern Exposure Music release artwork"
+            fill
+            className={`object-cover grayscale-[20%] transition-opacity duration-700 ${
+              bgReady ? "opacity-40" : "opacity-0"
+            }`}
+            sizes="100vw"
+            onLoad={() => setBgReady(true)}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/45 via-[#0a0a0f]/55 to-[#0a0a0f]/90" />
         <div className="absolute inset-0 bg-grid opacity-40" />
       </div>

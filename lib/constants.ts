@@ -48,9 +48,9 @@ export const BEATPORT_LABEL_URL =
 
 export const SOUNDCLOUD_URL = "https://soundcloud.com/raskalsound";
 
-/** Compact player + site accent color (cyan) for dark UI fit */
+/** Visual player — artwork background reads dark on the site; accent matches cyan */
 export const SOUNDCLOUD_EMBED_URL =
-  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raskalsound&color=%2322d3ee&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false";
+  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raskalsound&color=%2322d3ee&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true&buying=false&sharing=false&download=false";
 
 export const STREAMING_PLATFORMS = [
   {

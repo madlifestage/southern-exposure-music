@@ -140,13 +140,13 @@ export function ListenEverywhere() {
           linkClassName="text-accent-cyan"
           delay={0.2}
         >
-          <div className="overflow-hidden rounded-xl border border-white/5 bg-[#111113]">
+          <div className="overflow-hidden rounded-xl border border-white/5 bg-[#0a0a0f]">
             <iframe
               src={SOUNDCLOUD_EMBED_URL}
               title="Southern Exposure Music on SoundCloud"
               allow="autoplay"
               loading="lazy"
-              className="h-[166px] w-full border-0"
+              className="h-[300px] w-full border-0 md:h-[352px]"
             />
           </div>
         </EmbedCard>
