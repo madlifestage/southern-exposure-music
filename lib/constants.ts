@@ -32,13 +32,13 @@ export const SOCIAL_LINKS = [
   },
 ] as const;
 
-/** Raskal (US) — label head; Spotify has no dedicated label profile page */
-export const SPOTIFY_ARTIST_URL =
-  "https://open.spotify.com/artist/0KvLZjLEEmgOetcSMmNi2l";
+/** Southern Exposure Music — main Spotify playlist (from southernexposuremusic.com) */
+export const SPOTIFY_PLAYLIST_ID = "playlist/5HXNEBq0Zh983rReymbwqV";
 
-/** Label compilation — best stand-in for a “full catalog” on Spotify */
-export const SPOTIFY_CATALOG_URL =
-  "https://open.spotify.com/album/4NNNLpHanKOHs68s0Zof99";
+export const SPOTIFY_URL = "https://open.spotify.com/playlist/5HXNEBq0Zh983rReymbwqV";
+
+export const SPOTIFY_EMBED_URL =
+  "https://open.spotify.com/embed/playlist/5HXNEBq0Zh983rReymbwqV?utm_source=generator&theme=0";
 
 export const YOUTUBE_CHANNEL_URL =
   "https://www.youtube.com/channel/UC0NKwaBvZnOlVGNtclXW_ew";
@@ -48,17 +48,14 @@ export const BEATPORT_LABEL_URL =
 
 export const SOUNDCLOUD_URL = "https://soundcloud.com/raskalsound";
 
+/** Compact player + site accent color (cyan) for dark UI fit */
 export const SOUNDCLOUD_EMBED_URL =
-  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raskalsound&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true";
-
-/** Navbar / hero “Listen on Spotify” — latest release */
-export const SPOTIFY_URL =
-  "https://open.spotify.com/album/3g8vEltouCQg1qmS6fkxsg";
+  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raskalsound&color=%2322d3ee&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false";
 
 export const STREAMING_PLATFORMS = [
   {
     name: "Spotify",
-    href: SPOTIFY_CATALOG_URL,
+    href: SPOTIFY_URL,
     color: "#1DB954",
   },
   {
