@@ -33,7 +33,7 @@ export function ArtistCard({ artist, index }: ArtistCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/50 to-transparent" />
 
         {artist.featured && (
-          <div className="absolute left-3 top-3 rounded-full bg-accent-indigo/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+          <div className="absolute left-3 top-3 rounded-full bg-accent-indigo/90 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-white">
             Featured
           </div>
         )}
@@ -43,7 +43,7 @@ export function ArtistCard({ artist, index }: ArtistCardProps) {
             {artist.genres.slice(0, 2).map((genre) => (
               <span
                 key={genre}
-                className="rounded-full bg-accent-cyan/10 px-2 py-0.5 text-[10px] font-medium text-accent-cyan"
+                className="rounded-full bg-accent-cyan/10 px-2 py-0.5 text-xs font-medium text-accent-cyan"
               >
                 {genre}
               </span>
@@ -51,7 +51,7 @@ export function ArtistCard({ artist, index }: ArtistCardProps) {
           </div>
           <h3
             className={cn(
-              "font-bold tracking-tight",
+              "font-semibold leading-snug tracking-tight",
               artist.featured ? "text-xl md:text-2xl" : "text-base md:text-lg"
             )}
           >

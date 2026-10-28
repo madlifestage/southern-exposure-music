@@ -49,22 +49,22 @@ export function ReleaseCard({ release, index, onSelect, grid = false }: ReleaseC
 
         <div className="p-5">
           <div className="mb-2 flex flex-wrap gap-2">
-            <span className="rounded-full bg-accent-indigo/10 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-accent-indigo">
+            <span className="rounded-full bg-accent-indigo/10 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wider text-accent-indigo">
               {release.genre}
             </span>
             {release.catalog && (
-              <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+              <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
                 {release.catalog}
               </span>
             )}
             {release.releaseType && (
-              <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+              <span className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 {release.releaseType}
               </span>
             )}
           </div>
 
-          <h3 className="text-lg font-bold leading-tight">{release.title}</h3>
+          <h3 className="text-lg font-semibold leading-snug">{release.title}</h3>
           <p className="mt-1 text-sm text-muted-foreground">{release.artist}</p>
 
           <Button

@@ -1,11 +1,36 @@
 import { ImageResponse } from "next/og";
 import { SITE } from "@/lib/constants";
 
+async function loadCormorant(weight: 500 | 600 | 700) {
+  const css = await fetch(
+    `https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@${weight}&display=swap`,
+    {
+      headers: {
+        // Older agents receive a single woff, which next/og can embed.
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko",
+      },
+    }
+  ).then((response) => response.text());
+
+  const url = css.match(/url\(([^)]+)\)/)?.[1];
+  if (!url) {
+    throw new Error("Cormorant Infant font URL was not found");
+  }
+
+  return fetch(url).then((response) => response.arrayBuffer());
+}
+
 export const alt = `${SITE.name} — Independent Electronic Record Label`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
+  const [display, text] = await Promise.all([
+    loadCormorant(600),
+    loadCormorant(500),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -64,11 +89,11 @@ export default async function Image() {
           <div
             style={{
               fontSize: 72,
-              fontWeight: 700,
-              letterSpacing: "0.12em",
+              fontWeight: 600,
+              letterSpacing: "0.06em",
               color: "#ffffff",
               textAlign: "center",
-              fontFamily: "Georgia, serif",
+              fontFamily: "Cormorant Infant",
             }}
           >
             SOUTHERN EXPOSURE
@@ -83,8 +108,10 @@ export default async function Image() {
           <div
             style={{
               fontSize: 28,
+              fontWeight: 600,
+              fontFamily: "Cormorant Infant",
               color: "#22d3ee",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.16em",
               textTransform: "uppercase",
               marginTop: 8,
             }}
@@ -93,7 +120,9 @@ export default async function Image() {
           </div>
           <div
             style={{
-              fontSize: 22,
+              fontSize: 24,
+              fontWeight: 500,
+              fontFamily: "Cormorant Infant",
               color: "#a1a1aa",
               letterSpacing: "0.04em",
             }}
@@ -103,6 +132,12 @@ export default async function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: "Cormorant Infant", data: display, weight: 600 },
+        { name: "Cormorant Infant", data: text, weight: 500 },
+      ],
+    }
   );
 }

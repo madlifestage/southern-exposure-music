@@ -78,7 +78,7 @@ export async function POST(request: Request) {
       trimmedMessage,
     ].join("\n"),
     html: `
-      <div style="font-family: Inter, Arial, sans-serif; line-height: 1.6; color: #111;">
+      <div style="font-family: Georgia, 'Times New Roman', serif; line-height: 1.6; color: #111;">
         <h2 style="margin: 0 0 16px;">New message from ${SITE.name}</h2>
         <p><strong>Name:</strong> ${trimmedName}</p>
         <p><strong>Email:</strong> ${trimmedEmail}</p>

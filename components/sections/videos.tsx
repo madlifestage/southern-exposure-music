@@ -64,7 +64,7 @@ export function Videos() {
                   <p className="text-xs font-medium uppercase tracking-wider text-accent-cyan">
                     {video.artist}
                   </p>
-                  <h3 className="mt-1 text-lg font-bold">{video.title}</h3>
+                  <h3 className="mt-1 text-lg font-semibold leading-snug">{video.title}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {video.date}
                   </p>
@@ -124,7 +124,7 @@ export function Videos() {
               </div>
 
               <div className="mt-4 text-center">
-                <h3 className="text-xl font-bold">
+                <h3 className="text-xl font-semibold leading-snug">
                   {active.artist} — {active.title}
                 </h3>
                 <p className="text-sm text-muted-foreground">{active.date}</p>

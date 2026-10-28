@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cormorant_Infant } from "next/font/google";
 import { JsonLd } from "@/components/seo/json-ld";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const cormorant = Cormorant_Infant({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   display: "swap",
 });
@@ -73,8 +73,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} antialiased`}>
+    <html lang="en" className={`dark ${cormorant.variable}`}>
+      <body className={`${cormorant.className} antialiased`}>
         <JsonLd />
         {children}
       </body>
