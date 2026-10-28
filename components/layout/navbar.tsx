@@ -83,7 +83,7 @@ export function Navbar() {
               <li key={link.href}>
                 {renderNavItem(
                   link,
-                  "text-sm font-medium text-muted-foreground transition-colors hover:text-accent-cyan"
+                  "text-[15px] font-medium tracking-wide text-muted-foreground transition-colors hover:text-accent-cyan"
                 )}
               </li>
             ))}
