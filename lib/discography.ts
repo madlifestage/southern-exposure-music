@@ -479,21 +479,6 @@ export const DISCOGRAPHY: Release[] = [
     spotifyId: "album/1MGPzUEsbDzdjOv1C14Hxr",
     spotifyUrl: "https://open.spotify.com/album/1MGPzUEsbDzdjOv1C14Hxr",
   },
-  {
-    id: "o-come-all-ye-faithful",
-    title: "O Come All Ye Faithful",
-    artist: "High Desert Duo",
-    year: "2013",
-    released: "2013-10-19",
-    genre: "Holiday / Acoustic",
-    releaseType: "ALBUM",
-    description:
-      "High Desert Duo's holiday album on Southern Exposure Music — acoustic seasonal music from the early SEM catalog.",
-    image: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0272eb9e341c4d5996514ba055",
-    imageAlt: "O Come All Ye Faithful by High Desert Duo — Southern Exposure Music release artwork",
-    spotifyId: "album/73vbHk4XvKZFJxBVJuKdHM",
-    spotifyUrl: "https://open.spotify.com/album/73vbHk4XvKZFJxBVJuKdHM",
-  },
 ];
 
 export const FEATURED_RELEASE_IDS = [
