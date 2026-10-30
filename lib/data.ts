@@ -6,6 +6,8 @@ export type Release = {
   artist: string;
   catalog?: string;
   year?: string;
+  /** ISO release date, YYYY-MM-DD. Used to order the discography. */
+  released?: string;
   genre: string;
   releaseType?: string;
   description: string;
@@ -68,6 +70,24 @@ const FEATURED_OVERRIDES: Record<string, Partial<Release>> = {
       "Atmospheric progressive trance with spiritual undertones — CKsimon's signature sound design shines.",
   },
 };
+
+/** Newest release first. Entries with no usable date sort last. */
+export function compareReleasesNewestFirst(a: Release, b: Release) {
+  const timestamp = (release: Release) => {
+    const raw = release.released ?? (release.year ? `${release.year}-01-01` : "");
+    if (!raw) return null;
+    const value = Date.parse(`${raw}T00:00:00Z`);
+    return Number.isNaN(value) ? null : value;
+  };
+
+  const aTime = timestamp(a);
+  const bTime = timestamp(b);
+  if (aTime === null && bTime === null) return a.title.localeCompare(b.title);
+  if (aTime === null) return 1;
+  if (bTime === null) return -1;
+  if (aTime !== bTime) return bTime - aTime;
+  return a.title.localeCompare(b.title);
+}
 
 export const RELEASES: Release[] = FEATURED_RELEASE_IDS.map((id) => {
   const release = DISCOGRAPHY.find((entry) => entry.id === id);
