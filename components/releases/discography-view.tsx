@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { ReleaseCard } from "@/components/releases/release-card";
 import { ReleaseModal } from "@/components/releases/release-modal";
-import { DISCOGRAPHY, type Release } from "@/lib/data";
+import {
+  DISCOGRAPHY,
+  compareReleasesNewestFirst,
+  type Release,
+} from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const TYPE_FILTERS = ["All", "Single", "EP", "Album"] as const;
@@ -51,7 +55,7 @@ export function DiscographyView() {
         typeFilter === "All" || normalizeType(release) === typeFilter;
 
       return matchesQuery && matchesYear && matchesType;
-    });
+    }).sort(compareReleasesNewestFirst);
   }, [query, yearFilter, typeFilter]);
 
   const handleSelect = (release: Release) => {
